@@ -26,7 +26,7 @@ function displayArray() {
     cellElement.classList.add("square");
     cellElement.id = i;
     boardElement.append(cellElement);
-    cellElement.addEventListener("click", onUsermove);
+    cellElement.addEventListener("click", onUserMove);
   }
   displayTurn.innerText = "Turn: " + turn;
 }
@@ -49,6 +49,15 @@ function onUserMove(event) {
   checkWinner();
 }
 
+function checkWinner() {
+  if (winnerLine(playerO)) {
+    showWinner("The winner is: " + playerO);
+  } else if (winnerLine(playerX)) {
+    showWinner("The winner is: " + playerX);
+  } else if (boxes.every((element) => element !== null)) {
+    showWinner("It's a tie");
+  }
+}
 const lineElement = document.getElementById("winningLine");
 
 function showWinningLine(winningLine) {
@@ -97,16 +106,6 @@ function showWinner(resultText) {
   gameOverText.innerText = "Game Over!";
   gameOverWinner.innerText = resultText;
   gameOver = true;
-}
-
-function checkWinner() {
-  if (winnerLine(playerO)) {
-    showWinner("The winner is: " + playerO);
-  } else if (winnerLine(playerX)) {
-    showWinner("The winner is: " + playerX);
-  } else if (boxes.every((element) => element !== null)) {
-    showWinner("It's a tie");
-  }
 }
 
 function restartGame() {
