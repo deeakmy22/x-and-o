@@ -31,7 +31,7 @@ function displayArray() {
   displayTurn.innerText = "Turn: " + turn;
 }
 
-function onUsermove(event) {
+function onUserMove(event) {
   let curentSquare = document.getElementById(event.target.id);
   if (!(boxes[event.target.id] === null) || gameOver) {
     return;
