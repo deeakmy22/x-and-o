@@ -5,10 +5,10 @@ let gameOver = false;
 
 const boardElement = document.getElementById("board");
 const startButton = document.getElementById("startButton");
-const displayTurn = document.getElementById("displayTurn");
+const currentPlayer = document.getElementById("currentPlayer");
 const gameOverArea = document.getElementById("gameOverArea");
 const gameOverText = document.getElementById("gameOverText");
-const gameOverWinner = document.getElementById("gameOverWinner");
+const winnerElement = document.getElementById("winner");
 const restartButton = document.getElementById("restartButton");
 
 function startGame() {
@@ -26,12 +26,12 @@ function displayArray() {
     cellElement.classList.add("square");
     cellElement.id = i;
     boardElement.append(cellElement);
-    cellElement.addEventListener("click", onUserMove);
+    cellElement.addEventListener("click", writingSymbol);
   }
-  displayTurn.innerText = "Turn: " + turn;
+  currentPlayer.innerText = "Turn: " + turn;
 }
 
-function onUserMove(event) {
+function writingSymbol(event) {
   let curentSquare = document.getElementById(event.target.id);
   if (!(boxes[event.target.id] === null) || gameOver) {
     return;
@@ -45,7 +45,7 @@ function onUserMove(event) {
     boxes[event.target.id] = playerX;
     turn = playerO;
   }
-  displayTurn.innerText = "Turn: " + turn;
+  currentPlayer.innerText = "Turn: " + turn;
   checkWinner();
 }
 
@@ -104,7 +104,7 @@ function winnerLine(player) {
 function showWinner(resultText) {
   gameOverArea.style.display = "block";
   gameOverText.innerText = "Game Over!";
-  gameOverWinner.innerText = resultText;
+  winnerElement.innerText = resultText;
   gameOver = true;
 }
 

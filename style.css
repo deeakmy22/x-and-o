@@ -43,7 +43,7 @@ h1, h2 {
     position: relative;
 }
 
-.displayTurn {
+.currentPlayer {
     font-size: 30px;
     margin-bottom: 20px;
 }
