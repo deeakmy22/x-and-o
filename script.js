@@ -26,12 +26,12 @@ function displayArray() {
     cellElement.classList.add("square");
     cellElement.id = i;
     boardElement.append(cellElement);
-    cellElement.addEventListener("click", writingSymbol);
+    cellElement.addEventListener("click", writeSymbol);
   }
   currentPlayer.innerText = "Turn: " + turn;
 }
 
-function writingSymbol(event) {
+function writeSymbol(event) {
   let curentSquare = document.getElementById(event.target.id);
   if (!(boxes[event.target.id] === null) || gameOver) {
     return;
